@@ -1,0 +1,57 @@
+1. Some users visiting (http://ads.explained.com) find css and js
+files do not load (404). Why might this be?
+
+Answer:
+Possible reasons for this as follows:
+1. check if you allow MIME types for JS and CSS files extensions
+2. make sure the path is alright for these files
+3. Make sure you've specified your static asset directory correctly.
+4. you're running Adblock in your browser or JS disable
+5. check permissions on server as well
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+
+2. A very active website (approx 1m visitors a day) works perfectly
+for 50% of its users, but the other 50% timeout. Describe a few
+scenarios that might cause this and how you would investigate.
+
+Answer:
+1. Could be client-side issue or may be Server issue, to solve we need to check error code e.g
+408 Error Code means the request sent from the client to the web server took more time than the web server allows for. May be it is a 522 error, which happens when a TCP connection to the web server could not be established, in this case you can do following:
+  a:Make sure that you’re not blocking Cloudflare IPs in .htaccess, iptables, or your firewall.
+  b:Make sure that you’re not blocking Cloudflare IPs in .htaccess, iptables, or your firewall.
+  c: If you are seeing 522 errors in certain locations only, it means you likely forgot to whitelist one of our ranges that corresponds to these locations, so double check to ensure all our IPs are whitelisted appropriately.
+  d: It could be temp better to ask from hosting provider as well.
+2. DNS Issue, A 504 gateway timeout could also be because of a DNS issue. There are two sides to this, the first is on the server-side, such as the domain is not resolving to the correct IP.
+3. Temporarily Disable CDN, t could also be an issue with your content delivery network (CDN). If you are using a third-party CDN provider an easy way to troubleshoot this is to simply disable your CDN temporarily.
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+
+3. A popular JS library that you regularly use has been found to have a
+vulnerability. How would you check whether your code was vulnerable, and how would protect against it?
+
+Answer:
+Will try to do the following to safe the JS libraries in my project
+1. Implement version management for JavaScript libraries as part of patch management. I will Make sure that always the latest version is used, or at least a version that does not contain public known vulnerabilities. An excellent tool for this is retire.js.
+
+2.I will avoid library servers that appear on a malware blacklist. In addition, will check the contents of the JavaScript library by using checksums such as MD5 and SHA.
+
+3. Minimize the probability of XSS occurring and  sanitize always the user inputs!!!
+
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
+
+4. Describe a common development cycle for a new feature in an
+application.
+
+Answer:
+Feature-driven development (FDD) is an agile framework, FDD means organizes software development around making progress on features.
+
+FDD follow five steps:
+  Develop an overall model
+  Build a features list
+  Plan by feature
+  Design by feature
+  Build by feature
+
+I usually work in a loose agile enviornment, where these five steps looks quite change follow more CD/CI way.
